@@ -1,0 +1,20 @@
+<section>
+  <mat-card *ngFor="let user of users">
+    <mat-card-header>
+      <div mat-card-avatar class="user-card-header-img"  [style.background-image]="'url('+user.picture+')'"></div>
+      <mat-card-title
+        [routerLink]="['/user']"
+        (click)="goToUserComponent(user)">{{user.name}}</mat-card-title>
+      <mat-card-subtitle>{{user.phone}}</mat-card-subtitle>
+      <mat-icon (click)="deleteUser('delete-user', user._id)">delete_forever</mat-icon>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        {{user.about}}
+      </p>
+    </mat-card-content>
+  </mat-card>
+<button mat-fab class="add-btn" (click)="addUser()">+</button>
+</section>
+
+

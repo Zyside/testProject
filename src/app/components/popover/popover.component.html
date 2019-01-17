@@ -1,0 +1,157 @@
+<section class="popover-wrapper">
+  <header>
+    <p *ngIf="data.type === 'delete-user'">Are you sure want to delete this user?</p>
+    <p *ngIf="data.type === 'add-user'">Add new user</p>
+  </header>
+
+  <section *ngIf="data.type === 'add-user'">
+    <form [formGroup]="registerForm" (ngSubmit)="onYesClick()">
+      <div class="form-group">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Name" formControlName="name" class="form-control">
+          <mat-hint>Errors appear instantly!</mat-hint>
+          <mat-error *ngIf="name.getError('name') && !name.getError('required')">
+            Please enter a valid name
+          </mat-error>
+          <mat-error *ngIf="name.getError('required')">
+            Name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Company name" formControlName="company" class="form-control">
+          <mat-hint>Errors appear instantly!</mat-hint>
+          <mat-error *ngIf="company.getError('company') && !email.getError('required')">
+            Please enter a valid company
+          </mat-error>
+          <mat-error *ngIf="company.getError('required')">
+            Company is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Email" type="email" formControlName="email" class="form-control">
+          <mat-hint>Errors appear instantly!</mat-hint>
+          <mat-error *ngIf="email.getError('email') && !email.getError('required')">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="email.getError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field class="example-full-width">
+          <input matInput type="number" placeholder="Age" formControlName="age" class="form-control">
+          <mat-hint>Errors appear instantly!</mat-hint>
+          <mat-error *ngIf="age.getError('age') && !age.getError('required')">
+            Please enter a valid age
+          </mat-error>
+          <mat-error *ngIf="age.getError('required')">
+            Age is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Phone"
+                 [imask]="{mask: mask}"
+          [unmask]="true"
+          (complete)="onComplete"
+          type="tel" formControlName="phone" class="form-control">
+
+          <mat-hint>Errors appear instantly!</mat-hint>
+          <mat-error *ngIf="phone.getError('phone') && !phone.getError('required')">
+            Please enter a valid phone
+          </mat-error>
+          <mat-error *ngIf="phone.getError('required')">
+            Phone is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field class="example-full-width">
+          <input  matInput placeholder="Address" type="tel" formControlName="address" class="form-control">
+          <mat-hint>Errors appear instantly!</mat-hint>
+          <mat-error *ngIf="address.getError('phone') && !address.getError('required')">
+            Please enter a valid address
+          </mat-error>
+          <mat-error *ngIf="address.getError('required')">
+            Address is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field class="example-full-width">
+          <input  matInput placeholder="Balance" type="number"
+                  value="1000" min="0" step="0.01" formControlName="balance" class="form-control balance">
+          <mat-hint>Errors appear instantly!</mat-hint>
+          <mat-error *ngIf="balance.getError('balance') && !balance.getError('required')">
+            Please enter a valid balance
+          </mat-error>
+          <mat-error *ngIf="balance.getError('required')">
+            Balance is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field>
+          <mat-select placeholder="Gender" formControlName="gender">
+            <mat-option value="female">female</mat-option>
+            <mat-option value="male">male</mat-option>
+          </mat-select>
+          <mat-hint>Errors appear instantly!</mat-hint>
+          <mat-error *ngIf="gender.getError('gender') && !gender.getError('required')">
+            Please enter a valid gender
+          </mat-error>
+          <mat-error *ngIf="gender.getError('required')">
+            Gender is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field>
+          <mat-select placeholder="EyeColor" formControlName="eyeColor">
+            <mat-option value="brown">brown</mat-option>
+            <mat-option value="blue">blue</mat-option>
+            <mat-option value="green">green</mat-option>
+            <mat-option value="grey">grey</mat-option>
+          </mat-select>
+          <mat-hint>Errors appear instantly!</mat-hint>
+          <mat-error *ngIf="eyeColor.getError('gender') && !eyeColor.getError('required')">
+            Please enter a valid eyeColor
+          </mat-error>
+          <mat-error *ngIf="eyeColor.getError('required')">
+            YyeColor is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field class="example-full-width">
+          <textarea matInput placeholder="About" formControlName="about"></textarea>
+          <mat-hint>Errors appear instantly!</mat-hint>
+          <mat-error *ngIf="about.getError('gender') && !about.getError('required')">
+            Please enter a valid about area
+          </mat-error>
+          <mat-error *ngIf="about.getError('required')">
+            About is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-group upload-img-wrapper">
+        <p class="upload-img-title">Upload your image</p>
+        <input #file type="file" accept='image/*' (change)="preview(file.files)" />
+        <img [src]="imgURL" height="200" *ngIf="imgURL">
+      </div>
+    </form>
+  </section>
+
+  <footer *ngIf="data.type !== 'add' ">
+    <button mat-button (click)="onNoClick()">{{data.type === 'delete-user'? 'No Thanks' : 'Cancel'}}</button>
+    <button mat-button (click)="onYesClick()">{{data.type === 'delete-user'? 'I am sure' : 'Add user'}}</button>
+  </footer>
+
+</section>
+

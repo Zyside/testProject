@@ -1,0 +1,41 @@
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #342e90;
+  padding: 5vw 0;
+  min-height: 100vh;
+  .mat-card {
+    width: 49vw;
+    margin-bottom: 5vw;
+    position: relative;
+    @media only screen and (max-width: 480px)  {
+      width: 75vw;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+    mat-card-header{
+      .user-card-header-img {
+        background-size: cover;
+      }
+    }
+    mat-card-content {
+      p {
+        span {
+          font-weight: 500;
+        }
+      }
+      .tags-wrapper {
+        p {
+          display: inline-block;
+          margin-right: 1vw;
+        }
+        .tag {
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}
+

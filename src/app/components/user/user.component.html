@@ -1,0 +1,45 @@
+<section>
+  <mat-card>
+    <mat-card-header>
+      <div mat-card-avatar class="user-card-header-img"  [style.background-image]="'url('+user.picture+')'"></div>
+      <mat-card-title>{{user.name}}</mat-card-title>
+      <mat-card-subtitle>{{user.phone}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        {{user.about}}
+      </p>
+      <p>
+        Balance: <span>{{user.balance}}</span>
+      </p>
+      <p>
+        Age: <span>{{user.age}}</span>
+      </p>
+      <p>
+        Registered: <span>{{user.registered | date: 'M/d/yyyy, h:mm'}}</span>
+      </p>
+      <p>
+        Address: <span>{{user.address}}</span>
+      </p>
+
+      <p>
+        Email: <span>{{user.email}}</span>
+      </p>
+      <p>
+        Phone: <span>{{user.phone}}</span>
+      </p>
+
+      <p>
+        Eye color: <span>{{user.eyeColor}}</span>
+      </p>
+      <p>
+        Gender: <span>{{user.gender}}</span>
+      </p>
+
+        <div class="tags-wrapper" *ngIf="user.tags || user.tags !== [] ">
+          <p>Tags:</p>
+          <p class="tag" *ngFor="let tag of user.tags">{{tag}}</p>
+        </div>
+    </mat-card-content>
+  </mat-card>
+</section>
