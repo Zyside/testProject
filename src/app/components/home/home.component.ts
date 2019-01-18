@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data/data.service';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { PopoverComponent } from '../popover/popover.component';
@@ -17,12 +17,9 @@ export interface DialogData {
 export class HomeComponent implements OnInit {
 
   users: object[];
-  @Input()user: {user: Object};
 
   constructor(private dataService: DataService, public dialog: MatDialog, public snackBar: MatSnackBar,
-              private router: Router, public storage: StorageService) {
-
-  }
+              private router: Router, public storage: StorageService) {}
 
   addUser() {
     this.openPopover('add-user');

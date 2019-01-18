@@ -2,7 +2,7 @@ import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { CustomValidatorService } from '../../services/custom-validator/custom-validator.service';
 import { DialogData, HomeComponent } from '../home/home.component';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {MAT_DIALOG_DATA, MatDialogRef, MatSnackBar} from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef, MatSnackBar } from '@angular/material';
 
 
 @Component({
@@ -13,21 +13,24 @@ import {MAT_DIALOG_DATA, MatDialogRef, MatSnackBar} from '@angular/material';
 
 
 export class PopoverComponent implements OnInit {
-  @ViewChild('phoneSelect') phoneSelect;
+
   registerForm: FormGroup;
   submitted = false;
   public imagePath;
   imgURL: any;
   public message: string;
   mask = '+{0} (000) 000-0000';
+
   constructor(
     public dialogRef: MatDialogRef<HomeComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private formBuilder: FormBuilder, public snackBar: MatSnackBar
   ) {}
+
   onNoClick(): void {
     this.dialogRef.close();
   }
+
   onYesClick(): void {
     switch (this.data['type']) {
       case 'delete-user':
@@ -55,6 +58,7 @@ export class PopoverComponent implements OnInit {
         this.dialogRef.close();
     }
   }
+
   createId() {
     let text = '';
     const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -81,39 +85,52 @@ export class PopoverComponent implements OnInit {
     }
     return arrStr.join('');
   }
-  get email() {
-    return this.registerForm.get('email');
+
+  get about() {
+    return this.registerForm.get('about');
   }
-  get name() {
-    return this.registerForm.get('name');
-  }
-  get company() {
-    return this.registerForm.get('company');
-  }
-  get age() {
-    return this.registerForm.get('age');
-  }
-  get phone() {
-    return this.registerForm.get('phone');
-  }
+
   get address() {
     return this.registerForm.get('address');
   }
+
+  get age() {
+    return this.registerForm.get('age');
+  }
+
   get balance() {
     return this.registerForm.get('balance');
   }
+
+  get company() {
+    return this.registerForm.get('company');
+  }
+
+  get email() {
+    return this.registerForm.get('email');
+  }
+
+  get eyeColor() {
+    return this.registerForm.get('eyeColor');
+  }
+
+  get name() {
+    return this.registerForm.get('name');
+  }
+
+  get phone() {
+    return this.registerForm.get('phone');
+  }
+
   get picture() {
     return this.registerForm.get('picture');
   }
   get gender() {
     return this.registerForm.get('gender');
   }
-  get about() {
-    return this.registerForm.get('about');
-  }
-  get eyeColor() {
-    return this.registerForm.get('eyeColor');
-  }
+
+
+
   preview(files) {
     if (files.length === 0) {
       return;
